@@ -1,0 +1,20 @@
+package com.sathish.reactapplication;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sathish.reactapplication.service.ProjectService;
+
+public class Test {
+	
+	@Autowired
+	private ProjectService projectService;
+
+	public static void main(String[] args) {
+		test();
+	}
+	
+	void test(){
+		projectService.deleteByProjectIdentifier("REACT");
+	}
+
+}

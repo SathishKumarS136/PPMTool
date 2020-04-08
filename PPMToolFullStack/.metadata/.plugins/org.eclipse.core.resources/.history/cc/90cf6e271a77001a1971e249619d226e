@@ -1,0 +1,14 @@
+package com.sathish.reactapplication.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.sathish.reactapplication.domain.Project;
+import com.sathish.reactapplication.domain.ProjectTask;
+
+@Repository
+public interface ProjectTaskRepository extends JpaRepository<ProjectTask, Long> {
+	
+	Project findByProjectIdentifier(String projectIdentifier);
+	
+}

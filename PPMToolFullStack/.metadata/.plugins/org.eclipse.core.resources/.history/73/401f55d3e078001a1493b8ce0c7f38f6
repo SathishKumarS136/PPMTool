@@ -1,0 +1,93 @@
+package com.sathish.reactapplication.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import com.sathish.reactapplication.domain.Backlog;
+import com.sathish.reactapplication.domain.Project;
+import com.sathish.reactapplication.domain.User;
+import com.sathish.reactapplication.exception.ProjectIdException;
+import com.sathish.reactapplication.exception.ProjectNotFoundException;
+import com.sathish.reactapplication.repositories.BacklogRepository;
+import com.sathish.reactapplication.repositories.ProjectRepository;
+import com.sathish.reactapplication.repositories.UserRepository;
+
+@Service
+public class ProjectService {
+	@Autowired
+	private ProjectRepository projectRepository;
+	@Autowired
+	private BacklogRepository backlogRepository;
+	@Autowired
+	private UserRepository userRepository;
+
+	@CacheEvict(value = "projects", allEntries = true)
+//	@CachePut(value = "projects")
+	public Project saveOrUpdateProject(Project project, String username) {
+		try {
+			User user = userRepository.findByUsername(username);
+			project.setUser(user);
+			project.setProjectLeader(user.getUsername());
+			project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+			if (project.getId() == null) {
+				Backlog backlog = new Backlog();
+				backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+				backlog.setProject(project);
+				project.setBacklog(backlog);
+			}
+			if (project.getId() != null) {
+				System.out.println(project.getId());
+				Optional<Project> optional = projectRepository.findById(project.getId());
+				System.out.println(optional.get());
+				if (optional.isPresent()) {
+					String identifier1 = optional.get().getProjectIdentifier();
+					System.out.println(identifier1+"*******");
+					String identifier2 = findByProjectIdentifier(identifier1, username)
+							.getProjectIdentifier();
+					System.out.println(identifier1+"*******"+identifier2);
+					if (identifier1.equals(identifier2))
+						project.setBacklog(backlogRepository
+								.findByProjectIdentifier(identifier1.toUpperCase()));
+					else
+						throw new ProjectNotFoundException(
+								identifier1.toUpperCase() + " doesn't exist on your account");
+
+				}
+
+			}
+			return projectRepository.save(project);
+		} catch (Exception e) {
+			throw new ProjectIdException(
+					"Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+		}
+	}
+
+	public Project findByProjectIdentifier(String projectIdentifier, String username) {
+		Project project = projectRepository.findByProjectIdentifierAndProjectLeader(projectIdentifier.toUpperCase(),
+				username);
+		if (project != null)
+			return project;
+		throw new ProjectIdException("Project ID '" + projectIdentifier.toUpperCase() + "' doesn't exists");
+	}
+
+	@Cacheable(value = "projects")
+	public List<Project> findAllProjects(String username) {
+		return projectRepository.findAllByProjectLeader(username);
+	}
+
+	@CacheEvict(value = "projects", allEntries = true)
+	public void deleteByProjectIdentifier(String projectIdentifier, String username) {
+		Project project = projectRepository.findByProjectIdentifierAndProjectLeader(projectIdentifier.toUpperCase(),
+				username);
+		if (project != null) {
+			projectRepository.deleteById(project.getId());
+		} else {
+			throw new ProjectIdException("Project ID '" + projectIdentifier.toUpperCase() + "' doesn't exists");
+		}
+	}
+}

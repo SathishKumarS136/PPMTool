@@ -1,0 +1,26 @@
+package com.sathish.reactapplication.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sathish.reactapplication.domain.ProjectTask;
+import com.sathish.reactapplication.service.MapValidationErrorService;
+import com.sathish.reactapplication.service.ProjectTaskService;
+
+@RestController
+@RequestMapping("/api/backlog")
+@CrossOrigin(origins = "http://localhost:3000")
+public class ProjectTaskController {
+
+	@Autowired
+	private ProjectTaskService projectTaskService;
+	@Autowired
+	private MapValidationErrorService mapValidationErrorService;
+	
+	@PostMapping("/{backlog_id}")
+	public ResponseEntity<?> addPTtoBacklog(String backlog_id, ProjectTask projectTask, BindingResult result)
+}

@@ -1,0 +1,30 @@
+package com.sathish.reactapplication.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sathish.reactapplication.domain.Backlog;
+import com.sathish.reactapplication.domain.ProjectTask;
+import com.sathish.reactapplication.repositories.BacklogRepository;
+import com.sathish.reactapplication.repositories.ProjectTaskRepository;
+
+@Service
+public class ProjectTaskService {
+	@Autowired
+	private BacklogRepository backlogRepository;
+	@Autowired
+	private ProjectTaskRepository projectTaskRepository;
+	
+	public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
+		Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier.toUpperCase());
+		Integer sequence = backlog.getPTSequence()+1;
+		projectTask.setProjectSequence(projectIdentifier.toUpperCase()+"-"+sequence);
+		projectTask.setProjectIdentifier(projectIdentifier.toUpperCase());
+		if(projectTask.getPriority()==Integer.valueOf(0)||projectTask.getPriority()==null)
+			projectTask.setPriority(Integer.valueOf(3));
+		if(projectTask.getStatus()==""||projectTask.getStatus()==null)
+			projectTask.setStatus("TO_DO");
+		return projectTaskRepository.save(projectTask);
+	}
+
+}

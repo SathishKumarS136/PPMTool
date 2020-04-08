@@ -1,0 +1,8 @@
+package com.sathish.reactapplication.exception;
+
+
+import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
+
+public class CustomResponseEntityExceptionHandler extends ResponseStatusExceptionHandler{
+
+}

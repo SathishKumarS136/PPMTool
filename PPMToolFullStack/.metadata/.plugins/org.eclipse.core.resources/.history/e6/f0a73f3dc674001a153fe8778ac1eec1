@@ -1,0 +1,5 @@
+package com.sathish.reactapplication.service;
+
+public class MapValidationErrorService {
+
+}

@@ -1,0 +1,5 @@
+package com.sathish.reactapplication.payload;
+
+public class JWTLoginSuccessResponse {
+
+}

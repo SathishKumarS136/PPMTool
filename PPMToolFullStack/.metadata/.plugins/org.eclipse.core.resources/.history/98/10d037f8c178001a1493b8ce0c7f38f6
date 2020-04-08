@@ -1,0 +1,11 @@
+package com.sathish.reactapplication.security;
+
+import org.springframework.security.core.Authentication;
+
+public class JwtTokenProvider {
+	
+	public String generateToken(Authentication authentication) {
+		User user = (User)authentication.getPrincipal();
+	}
+
+}

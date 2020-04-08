@@ -1,0 +1,24 @@
+package com.sathish.reactapplication;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sathish.reactapplication.domain.Project;
+import com.sathish.reactapplication.service.ProjectService;
+
+public class Test {
+	
+	@Autowired
+	private ProjectService projectService;
+
+	public static void main(String[] args) {
+		Test test=new Test();
+		test.test();
+	}
+	
+	void test(){
+		Project project=new Project();
+		project.setProjectIdentifier("REACT");
+		projectService.findByProjectIdentifier("REACT");
+	}
+
+}

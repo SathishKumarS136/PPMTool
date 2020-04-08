@@ -1,0 +1,5 @@
+package com.sathish.reactapplication.exception;
+
+public class CustomResponseEntityExceptionHandler {
+
+}

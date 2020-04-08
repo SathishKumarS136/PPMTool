@@ -1,0 +1,9 @@
+package com.sathish.reactapplication.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.sathish.reactapplication.domain.Project;
+
+public interface ProjectRepository extends CrudRepository<Project, Long> {
+
+}

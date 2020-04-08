@@ -1,0 +1,33 @@
+package com.sathish.reactapplication.web;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sathish.reactapplication.domain.Project;
+import com.sathish.reactapplication.service.MapValidationErrorService;
+import com.sathish.reactapplication.service.ProjectService;
+
+@Controller
+@RequestMapping("/api/project")
+public class ProjectController {
+	@Autowired
+	private ProjectService projectService; 
+	@Autowired
+	private MapValidationErrorService mapValidationErrorService;
+
+	@PostMapping("/")
+	public ResponseEntity<Project> createProject(@Valid @RequestBody Project project, BindingResult result) {
+		mapValidationErrorService.mapValidationService(result);
+		Project newProject = projectService.saveOrUpdateProject(project);
+		return new ResponseEntity<Project>(newProject, HttpStatus.CREATED);
+	}
+
+}

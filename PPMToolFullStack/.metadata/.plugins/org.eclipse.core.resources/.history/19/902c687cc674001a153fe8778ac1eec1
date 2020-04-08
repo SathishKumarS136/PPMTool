@@ -1,0 +1,11 @@
+package com.sathish.reactapplication.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MapValidationErrorService {
+	
+	public ResponseEntity<?> MapValidationService(BindingResult result){
+		return null;
+	}
+}

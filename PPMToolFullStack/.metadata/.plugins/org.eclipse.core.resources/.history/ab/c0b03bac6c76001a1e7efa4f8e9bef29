@@ -1,0 +1,21 @@
+package com.sathish.reactapplication;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
+
+import com.sathish.reactapplication.service.ProjectService;
+
+@SpringBootApplication
+@EnableCaching
+public class PpmToolApplication {
+	
+	@Autowired
+	private ProjectService projectService;
+
+	public static void main(String[] args) {
+		SpringApplication.run(PpmToolApplication.class, args);
+	}
+
+}

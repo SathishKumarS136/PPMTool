@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/security\/spring-security-config\/5.2.2.RELEASE\/spring-security-config-5.2.2.RELEASE.jar&lt;org.springframework.security.config.annotation.web(WebSecurityConfigurer.class[WebSecurityConfigurer" modifiers="1537" timestamp="1586242090217"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/security\/spring-security-web\/5.2.2.RELEASE\/spring-security-web-5.2.2.RELEASE.jar&lt;org.springframework.security.web(AuthenticationEntryPoint.class[AuthenticationEntryPoint" modifiers="1537" timestamp="1586242092992"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.2.6.RELEASE\/spring-data-jpa-2.2.6.RELEASE.jar&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1585812016315"/>
+<typeInfo handle="=PPMTool/C:\/Program Files\/Java\/jre1.8.0_231\/lib\/rt.jar&lt;java.lang(RuntimeException.class[RuntimeException" modifiers="33" timestamp="1572871709732"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/spring-context\/5.2.5.RELEASE\/spring-context-5.2.5.RELEASE.jar&lt;org.springframework.validation(Validator.class[Validator" modifiers="1537" timestamp="1585812049960"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/junit\/jupiter\/junit-jupiter-params\/5.5.2\/junit-jupiter-params-5.5.2.jar&lt;org.junit.jupiter.params.shadow.com.univocity.parsers.conversions(Validator.class[Validator" modifiers="1537" timestamp="1574137370909"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/security\/spring-security-core\/5.2.2.RELEASE\/spring-security-core-5.2.2.RELEASE.jar&lt;org.springframework.security.core.userdetails(UserDetailsService.class[UserDetailsService" modifiers="1537" timestamp="1586242091679"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/security\/spring-security-core\/5.2.2.RELEASE\/spring-security-core-5.2.2.RELEASE.jar&lt;org.springframework.security.provisioning(UserDetailsManager.class[UserDetailsManager" modifiers="1537" timestamp="1586242091679"/>
+<typeInfo handle="=PPMTool/C:\/Users\/satzr\/.m2\/repository\/org\/springframework\/spring-web\/5.2.5.RELEASE\/spring-web-5.2.5.RELEASE.jar&lt;org.springframework.web.filter(OncePerRequestFilter.class[OncePerRequestFilter" modifiers="1057" timestamp="1585812093053"/>
+</typeInfoHistroy>
